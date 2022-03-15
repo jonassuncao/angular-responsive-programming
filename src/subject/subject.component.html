@@ -1,0 +1,29 @@
+<h3>1 - Subject vs BehaviorSubject vs EventEmitter</h3>
+
+<div class="container">
+  Quantidade de ouvintes: {{ listeners.length }}
+  <button type="button" (click)="onCreateOuvinte()">Criar novo ouvinte</button>
+</div>
+
+<br />
+
+<div>Usando Subject</div>
+<form class="container" novalidate (ngSubmit)="onSubmit(msg.value)">
+  <input #msg placeholder="Mensagem" /><button>Enviar</button>
+</form>
+
+<!-- Exemplo de Two-way Data binding -->
+<div>Usando Two-way data binding</div>
+<input [(ngModel)]="model" placeholder="model" />
+
+<div class="ouvinte" *ngFor="let item of listeners; let ouvinte = index">
+  Ouvinte: <b> {{ ouvinte + 1 }} </b> <br />
+  <br />
+  Valor do <b>Subject</b> :
+  <input [value]="subject$ | async" placeholder="Subject" />
+  <br />
+  Valor do <b>Behavior Subject</b> :
+  <input [value]="behaviorSubject$ | async" placeholder="Behavior Subject" />
+  <br />
+  Valor do <b>Model</b> : <input [(ngModel)]="model" placeholder="Model" />
+</div>

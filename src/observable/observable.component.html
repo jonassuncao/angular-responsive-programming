@@ -1,0 +1,34 @@
+<h3>2 - Observable</h3>
+
+<form class="container" novalidate (ngSubmit)="onFilter(filtro.value)">
+  <input #filtro placeholder="Filtro" />
+  <button>Enviar</button>
+</form>
+
+<select type="select" [formControl]="orderCtrl">
+  <option value="titulo">Titulo</option>
+  <option value="linguagem">Linguagem</option>
+</select>
+
+<select type="select" [formControl]="pageCtrl">
+  <option [value]="1">1</option>
+  <option [value]="2">2</option>
+  <option [value]="3">3</option>
+</select>
+
+<div class="table" *ngIf="data$ | async as data; else initTemplate">
+  <b class="table__title">Titulo</b> <b class="table__title">Linguagem</b>
+
+  <ng-container *ngFor="let lib of data">
+    <span>{{ lib.titulo }}</span> <span>{{ lib.linguagem }}</span>
+  </ng-container>
+
+  <span class="table__empty" *ngIf="!data.length">
+    Não encontramos nada com esse filtro
+  </span>
+</div>
+<ng-template #initTemplate>
+  <div class="table">
+    <span class="table__empty">Digite algo para filtrar!</span>
+  </div>
+</ng-template>

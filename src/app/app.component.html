@@ -1,0 +1,36 @@
+<!--  Exemplo de interpolação -->
+
+<h1>{{ angular }}</h1>
+<a
+  href="https://angular.io/guide/architecture-next-steps#responsive-programming"
+  target="_blank"
+>
+  Programação responsiva
+</a>
+
+<hr class="split" />
+
+<h3>
+  <a
+    href="https://angular.io/guide/forms-overview#introduction-to-forms-in-angular"
+    target="_blank"
+  >
+    Formulários Reativo:
+  </a>
+</h3>
+<app-formulario-reativo></app-formulario-reativo>
+
+<hr class="split" />
+
+<h3>
+  <a
+    href="https://angular.io/guide/observables#using-observables-to-pass-values"
+    target="_blank"
+  >
+    Observables (RxJS):
+  </a>
+</h3>
+
+Pai - Mensagem: "{{ mensagem }}"
+<app-subject (mensagem)="onReceive($event)"></app-subject>
+<app-observable></app-observable>

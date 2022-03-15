@@ -1,0 +1,24 @@
+<!-- Exemplo de Event Binding                     Exemplo de Property Binding    -->
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmit(form)" novalidate>
+  <input type="text" formControlName="nome" placeholder="Nome" />
+  <app-form-status nome="nome" [control]="form.get('nome')"></app-form-status>
+
+  <input type="text" formControlName="serie" placeholder="Série" />
+  <app-form-status nome="serie" [control]="form.get('serie')"></app-form-status>
+
+  <input type="text" formControlName="turma" placeholder="Turma" />
+  <app-form-status nome="turma" [control]="form.get('turma')"></app-form-status>
+
+  <select type="select" formControlName="usuarioId">
+    <option *ngFor="let usuario of usuarios$ | async" [value]="usuario.id">
+      {{ usuario.nome }} - {{ usuario.email }}
+    </option>
+  </select>
+  <app-form-status
+    nome="usuarioId"
+    [control]="form.get('usuarioId')"
+  ></app-form-status>
+
+  <button type="submit">Enviar</button>
+  <app-form-status nome="Formulário" [control]="form"></app-form-status>
+</form>
